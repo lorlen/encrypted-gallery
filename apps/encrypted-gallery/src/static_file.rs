@@ -8,7 +8,7 @@ use rust_embed::RustEmbed;
 static INDEX_HTML: &str = "index.html";
 
 #[derive(RustEmbed)]
-#[folder = "dist/apps/encrypted-gallery-ui"]
+#[folder = "../../dist/apps/encrypted-gallery-ui"]
 struct Assets;
 
 pub async fn static_handler(uri: Uri) -> impl IntoResponse {
