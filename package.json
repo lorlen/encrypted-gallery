@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "cargo run",
-    "build": "cargo build",
+    "build": "npm run build:ui && nx build encrypted-gallery",
     "dev:ui": "nx serve encrypted-gallery-ui --port 3000",
     "build:ui": "nx build encrypted-gallery-ui"
   },
