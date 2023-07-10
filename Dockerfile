@@ -13,10 +13,13 @@ RUN --mount=type=cache,target=/wd/node_modules \
 
 FROM docker.io/library/rust:1.70-alpine AS build
 
+ARG DUMB_INIT_VER=1.2.5
 ENV SYSROOT=/dummy
 WORKDIR /wd
 
-RUN apk add musl-dev
+RUN apk add musl-dev \
+    && wget -O ./dumb-init "https://github.com/Yelp/dumb-init/releases/download/v${DUMB_INIT_VER}/dumb-init_${DUMB_INIT_VER}_$(apk --print-arch)" \
+    && chmod +x ./dumb-init
 COPY Cargo.lock Cargo.toml ./
 COPY src/ ./src/
 COPY --from=build-web /wd/dist/ ./web/dist/
@@ -27,5 +30,6 @@ RUN --mount=type=cache,target=/wd/target \
 
 FROM scratch AS final
 
-COPY --from=build /wd/build/encrypted-gallery /
+COPY --from=build /wd/dumb-init /wd/build/encrypted-gallery /
+ENTRYPOINT [ "/dumb-init", "--" ]
 CMD [ "/encrypted-gallery" ]

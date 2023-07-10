@@ -11,6 +11,8 @@ async fn main() {
     let app = Router::new().fallback(static_handler);
     let addr = SocketAddr::from(([0, 0, 0, 0], 8080));
 
+    println!("Listening on {}", addr);
+
     Server::bind(&addr)
         .serve(app.into_make_service())
         .await
