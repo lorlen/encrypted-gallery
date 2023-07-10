@@ -1,0 +1,38 @@
+{
+  "name": "encrypted-gallery-ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/encrypted-gallery-ui/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "options": {
+        "outputPath": "dist/apps/encrypted-gallery-ui",
+        "configFile": "apps/encrypted-gallery-ui/vite.config.ts"
+      },
+      "configurations": {
+        "production": {
+          "mode": "production",
+          "filenameHashing": true,
+          "productionSourceMap": true,
+          "css": {
+            "extract": true,
+            "sourceMap": false
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "options": {
+        "buildTarget": "encrypted-gallery-ui:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "encrypted-gallery-ui:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

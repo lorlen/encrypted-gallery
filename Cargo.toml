@@ -1,12 +1,8 @@
-[package]
-name = "encrypted-gallery"
-version = "0.1.0"
-edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[workspace]
+members = [
+	'apps/encrypted-gallery',
+]
 
-[dependencies]
-axum = "0.6.18"
-mime_guess = "2.0.4"
-rust-embed = { version = "6.7.0", features = ["axum"] }
-tokio = { version = "1.28.2", features = ["full"] }
+[profile.release]
+lto = true
