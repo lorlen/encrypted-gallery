@@ -8,8 +8,9 @@ import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
-const PRIMENG_MODULES = [ButtonModule];
+const PRIMENG_MODULES = [ButtonModule, ToastModule];
 
 @NgModule({
   declarations: [PageNotFoundComponent, WebviewDirective],

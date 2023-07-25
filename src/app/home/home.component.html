@@ -1,7 +1,12 @@
-<div class="container">
+<div class="center-container">
   <h1 class="title">
     {{ "PAGES.HOME.TITLE" | translate }}
   </h1>
+
+  <p-button (onClick)="helloWorld()">{{
+    "PAGES.HOME.HELLO_WORLD" | translate
+  }}</p-button>
+
   <p-button routerLink="/detail">{{
     "PAGES.HOME.GO_TO_DETAIL" | translate
   }}</p-button>

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -16,6 +17,8 @@ import { DetailModule } from './detail/detail.module';
 
 import { AppComponent } from './app.component';
 
+import { MessageService } from 'primeng/api';
+
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
   new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -24,6 +27,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     CoreModule,
@@ -39,7 +43,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
       },
     }),
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
